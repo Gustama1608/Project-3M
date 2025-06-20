@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rumah Sakit Sentosa - Login & Register</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="overlay" id="mainContainer">
+      <header>
+        <h1>🏥 Rumah Sakit Sentosa</h1>
+        <p>Memberi Layanan Kesehatan Penuh Kasih & Profesional</p>
+      </header>
+
+      <div class="form-container" id="formBox">
+        <h2 id="formTitle">Login</h2>
+        <form id="authForm" onsubmit="handleSubmit(event)">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <button type="submit">Masuk</button>
+        </form>
+        <div class="toggle-link">
+          <span id="toggleText">
+            Belum punya akun?
+            <a onclick="toggleForm()">Daftar di sini</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="beranda-container" id="beranda" style="display: none">
+      <h2>Selamat Datang di Rumah Sakit Sentosa</h2>
+      <p>Silakan pilih peran Anda:</p>
+      <div class="roles">
+        <button onclick="pilihRole('Admin')">Admin 👨‍💼</button>
+        <button onclick="pilihRole('Pasien')">Pasien 🧑‍🦽</button>
+        <button onclick="pilihRole('Dokter')">Dokter 🧑‍⚕️</button>
+        <button onclick="pilihRole('Apoteker')">Apoteker 💊</button>
+      </div>
+      <p id="roleResult"></p>
+      <a
+        id="lanjutkanBtn"
+        href="#"
+        class="lanjutkan-button"
+        style="display: none"
+        >Lanjutkan ➡️</a
+      >
+    </div>
+
+    <script>
+      let isLogin = true;
+
+      function toggleForm() {
+        const formTitle = document.getElementById("formTitle");
+        const authForm = document.getElementById("authForm");
+        const toggleText = document.getElementById("toggleText");
+
+        if (isLogin) {
+          formTitle.textContent = "Register";
+          authForm.innerHTML = `
+          <input type="text" id="name" placeholder="Nama Lengkap" required />
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <button type="submit">Daftar</button>
+        `;
+          toggleText.innerHTML =
+            'Sudah punya akun? <a onclick="toggleForm()">Login di sini</a>';
+        } else {
+          formTitle.textContent = "Login";
+          authForm.innerHTML = `
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <button type="submit">Masuk</button>
+        `;
+          toggleText.innerHTML =
+            'Belum punya akun? <a onclick="toggleForm()">Daftar di sini</a>';
+        }
+
+        authForm.onsubmit = handleSubmit;
+        isLogin = !isLogin;
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        if (isLogin) {
+          document.getElementById("mainContainer").style.display = "none";
+          document.getElementById("beranda").style.display = "flex";
+        } else {
+          alert("Registrasi berhasil. Silakan login.");
+          toggleForm();
+        }
+      }
+
+      function pilihRole(role) {
+        const roleResult = document.getElementById("roleResult");
+        const lanjutkanBtn = document.getElementById("lanjutkanBtn");
+
+        roleResult.textContent = `✅ Anda memilih peran: ${role}`;
+        lanjutkanBtn.style.display = "inline-block";
+
+        // Atur URL berdasarkan role
+        let targetURL = "#";
+        switch (role) {
+          case "Admin":
+            targetURL = "admin.html";
+            break;
+          case "Pasien":
+            targetURL = "pasien.html";
+            break;
+          case "Dokter":
+            targetURL = "dokter.html";
+            break;
+          case "Apoteker":
+            targetURL = "apoteker.html";
+            break;
+        }
+
+        lanjutkanBtn.href = targetURL;
+      }
+    </script>
+  </body>
+</html>

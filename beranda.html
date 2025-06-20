@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda - Rumah Sakit Sentosa</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="halaman-beranda">
+    <header class="navbar">
+      <div class="logo">🏥 Rumah Sakit Sentosa</div>
+      <nav>
+        <a href="beranda.html" class="nav-link">Beranda</a>
+        <a href="index.html" class="nav-link">Pendaftaran Akun</a>
+        <div class="dropdown">
+          <button class="dropbtn">Akun ▼</button>
+          <div class="dropdown-content">
+            <a href="#">Pengaturan</a>
+            <a href="index.html">Logout</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="content">
+      <div class="image-text-box">
+        <img
+          src="images/rumahsakit.jpeg"
+          alt="Foto Rumah Sakit"
+          class="featured-image"
+        />
+        <div class="info-box">
+          <h2>✨ Tentang Rumah Sakit Sentosa</h2>
+          <p>
+            Rumah Sakit Sentosa adalah rumah sakit modern yang memberikan
+            pelayanan medis lengkap, profesional, dan berorientasi pada
+            keselamatan pasien. Fasilitas kami meliputi rawat inap, IGD 24 jam,
+            poliklinik spesialis, laboratorium, serta layanan farmasi yang
+            lengkap.
+          </p>
+
+          <h3>🎯 Visi</h3>
+          <p>
+            Menjadi rumah sakit terbaik yang berfokus pada pelayanan manusiawi
+            dan berbasis teknologi.
+          </p>
+
+          <h3>📌 Misi</h3>
+          <ul>
+            <li>
+              Memberikan pelayanan kesehatan yang cepat, tepat, dan berkualitas.
+            </li>
+            <li>
+              Meningkatkan mutu tenaga medis dan paramedis secara berkelanjutan.
+            </li>
+            <li>Menerapkan sistem informasi rumah sakit berbasis digital.</li>
+          </ul>
+
+          <div class="image-gallery">
+            <img
+              src="images/ruangan 1.avif"
+              alt="Gedung 2"
+              onclick="showModal(this.src)"
+            />
+            <img
+              src="images/ruangan 2.avif"
+              alt="Gedung 3"
+              onclick="showModal(this.src)"
+            />
+            <img
+              src="images/ruangan3.avif"
+              alt="Gedung 3"
+              onclick="showModal(this.src)"
+            />
+            <img
+              src="images/rumahsakit.jpeg"
+              alt="Gedung 3"
+              onclick="showModal(this.src)"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal" id="imageModal" onclick="this.style.display='none'">
+      <div class="modal-backdrop"></div>
+      <img id="modalImage" src="" alt="Preview" />
+    </div>
+
+    <script>
+      function showModal(src) {
+        document.getElementById("modalImage").src = src;
+        document.getElementById("imageModal").style.display = "flex";
+      }
+    </script>
+  </body>
+</html>
