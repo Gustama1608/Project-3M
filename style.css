@@ -98,7 +98,7 @@ header p {
   min-height: 100vh;
   padding: 40px 20px;
   background: linear-gradient(rgba(45, 46, 46, 0.75), rgba(20, 20, 30, 0.75)),
-    url("images/rumahsakit.jpeg") no-repeat center center fixed;
+    url("rumahsakit.jpeg") no-repeat center center fixed;
   background-size: cover;
   text-align: center;
 }
